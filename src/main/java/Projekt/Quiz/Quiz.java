@@ -1,87 +1,84 @@
 package Projekt.Quiz;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+//import java.util.ArrayList;
+//import java.util.Arrays;
+//import java.util.List;
 import java.util.Scanner;
 
 public class Quiz {
 	public static void main(String[] args) {
 
-		System.out.println("Hej och välkommen till Harry potter quiz!");
+		System.out.println("Hello and welcome to this Harry Potter quiz!");
 
 		// Användaren fyller i sitt användarnamn
 		Scanner scanner = new Scanner(System.in);
 
-		System.out.println("Vänligen ange ditt användarnamn: ");
+		System.out.println("Please enter your username: ");
 		
 		 String username = scanner.nextLine(); User user = new User();
-		 user.setUsername(username); System.out.println("Hej " + username +
-		 ", välkommen till Harry Potter Quiz");
+		 user.setUsername(username); System.out.println("Hello " + username + "!" );
 		 
 		 
 		 //Användaren får fylla i svårighetsgrad av quizet
-		 System.out.println("Det finns tre svårighetsgrader: "); Difficulty difficulty
-		 = new Difficulty(); difficulty.printDifficultyList();
+		 System.out.println("There are three levels of difficulty: "); 
+		 Difficulty difficulty = new Difficulty(); 
+		 difficulty.printDifficultyList();
 		 
 
-		System.out.println("Skriv in siffran för den svårighetsgrad du väljer: ");
+			
+	while(true) {
+		System.out.println("Enter numbers for the difficulty of your choice: ");
 		int choice = scanner.nextInt();
 		scanner.nextLine();
-
+		
 		// Lätta frågorna
 		if (choice == 1) {
 			System.out.println("-----------------------------------");
-			System.out.println("LÄTT"
-					+ "\n- Till varje fråga kommer du få tre alternativ: 1, 2 och 3. Skriv den siffra som du tror har rätt alternativ :)");
+			System.out.println("EASY"
+					+ "\n- For each question you will get three options: 1, 2 and 3. Write the number that you think has the correct option :)");
 
 			System.out.println("-----------------------------------");
 			
-			// Anropar en metod som skriver ut fråga 1
-			Questions question1 = new Questions("Which platform does the Hogwarts Express leave from?",
-					Arrays.asList("Nine and three-quarters", "Ten and a half", "Nine and four-quartes"), "1");
-			question1.printQuestion("Fråga 1: ");
-
-			// Kollar vad användaren skrivit in och anropar en metod som ser om det är rätt
-			// eller fel.
-			String question1Choice = scanner.nextLine();
-			question1.checkAnswer(question1Choice);
-
-			System.out.println("-----------------------------------");
-
-			Questions question2 = new Questions(
-					"Who stopped Harry and Ron from going through platform nine and three-quarters?",
-					Arrays.asList("Duddly", "Dobby", "Malfoy"), "2");
-			question2.printQuestion("Fråga 2: ");
-
-			String question2Choice = scanner.nextLine();
-			question2.checkAnswer(question2Choice);
-
-			System.out.println("-----------------------------------");
-
-			Questions question3 = new Questions("In which movie do dementors board the Hogwarts Express?",
-					Arrays.asList("First movie", "Second movie", "Third movie"), "1");
-			question3.printQuestion("Fråga 3: ");
-
-			String question3Choice = scanner.nextLine();
-			question3.checkAnswer(question3Choice);
+			ListWithQuestions easy = new ListWithQuestions();
+			easy.choiceEasy();
+			break;
 		}
 
 		// Medel frågor
-		if (choice == 2) {
+		else if (choice == 2) {
+			System.out.println("-----------------------------------");
+			System.out.println("MEDIUM"
+					+ "\n- For each question you will get three options: 1, 2 and 3. Write the number that you think has the correct option :)");
 
+			System.out.println("-----------------------------------");
+			
+			ListWithQuestions medium = new ListWithQuestions();
+			medium.choiceMedium();
+			break;
 		}
 
 		// Svåra frågor
-		if (choice == 3) {
+		else if (choice == 3) {
+			System.out.println("-----------------------------------");
+			System.out.println("HARD"
+					+ "\n- For each question you will get three options: 1, 2 and 3. Write the number that you think has the correct option :)");
 
+			System.out.println("-----------------------------------");
+			
+			ListWithQuestions hard = new ListWithQuestions();
+			hard.choiceHard();
+			break;
 		}
 
 		// Om användaren skriver in något annat än 1, 2 eller 3.
 		else {
-
+			System.out.println("You have to write the number 1, 2 or 3. Try again.");
 		}
+	}
 
+		//Här lägger du in det som händer efter användaren svarat på alla frågor
+		
+		
 		scanner.close();
 
 		/*

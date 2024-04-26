@@ -5,7 +5,7 @@ public class Difficulty {
 
 	//Ta bort klassen och lägg in detta i tex main direkt
 	public void printDifficultyList() {
-		String[] difficultys = {"1. Lätt", "2. Medel", "3. Svår"};
+		String[] difficultys = {"1. Easy", "2. Medium", "3. Hard"};
 		for (String difficulty : difficultys) {
 			System.out.println(difficulty);
 		}
