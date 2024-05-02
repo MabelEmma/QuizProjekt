@@ -14,7 +14,8 @@ public class ListWithQuestions {
 	Scanner scanner = new Scanner(System.in);
 	
 	//Metod som skriver ut alla lätta frågor i en specifik ordning. Anropar denna metod i main.
-	public void choiceEasy() {
+	public int choiceEasy(User user) {
+				
 				// Anropar en metod som skriver ut fråga 1
 				Questions question1 = new Questions("Which platform does the Hogwarts Express leave from?",
 						Arrays.asList("Nine and three-quarters", "Ten and a half", "Nine and four-quartes"), "1");
@@ -23,17 +24,18 @@ public class ListWithQuestions {
 				// Kollar vad användaren skrivit in och anropar en metod som ser om det är rätt
 				// eller fel.
 				String question1Choice = scanner.nextLine();
-				question1.checkAnswer(question1Choice);
+			
+				question1.checkAnswer(question1Choice, user);
+				
 
 				System.out.println("-----------------------------------");
 
-				Questions question2 = new Questions(
-						"Who stopped Harry and Ron from going through platform nine and three-quarters?",
+				Questions question2 = new Questions("Who stopped Harry and Ron from going through platform nine and three-quarters?",
 						Arrays.asList("Duddly", "Dobby", "Malfoy"), "2");
 				question2.printQuestion("Question 2: ");
 
 				String question2Choice = scanner.nextLine();
-				question2.checkAnswer(question2Choice);
+				question2.checkAnswer(question2Choice, user);
 
 				System.out.println("-----------------------------------");
 
@@ -42,7 +44,7 @@ public class ListWithQuestions {
 				question3.printQuestion("Question 3: ");
 
 				String question3Choice = scanner.nextLine();
-				question3.checkAnswer(question3Choice);
+				question3.checkAnswer(question3Choice, user);
 				
 				System.out.println("-----------------------------------");
 
@@ -51,7 +53,7 @@ public class ListWithQuestions {
 				question4.printQuestion("Question 4: ");
 
 				String question4Choice = scanner.nextLine();
-				question4.checkAnswer(question4Choice);
+				question4.checkAnswer(question4Choice, user);
 				
 				System.out.println("-----------------------------------");
 
@@ -60,14 +62,14 @@ public class ListWithQuestions {
 				question5.printQuestion("Question 5: ");
 
 				String question5Choice = scanner.nextLine();
-				question5.checkAnswer(question5Choice);
+				question5.checkAnswer(question5Choice, user);
 				
-				
+				return user.getPoints();
 	}
 	
 	
 	//Metod som skriver ut alla medium frågor i en specifik ordning. Anropar denna metod i main.
-	public void choiceMedium() {
+	public int choiceMedium(User user) {
 					// Anropar en metod som skriver ut fråga 1
 					Questions question1 = new Questions("What are the words that wipe the Marauder's Map blank?",
 							Arrays.asList("I solemnly swear I am up to no good", "Mischief managed", "I stuck Mrs. Norris in a suit of armor"), "2");
@@ -76,7 +78,7 @@ public class ListWithQuestions {
 					// Kollar vad användaren skrivit in och anropar en metod som ser om det är rätt
 					// eller fel.
 					String question1Choice = scanner.nextLine();
-					question1.checkAnswer(question1Choice);
+					question1.checkAnswer(question1Choice, user);
 
 					System.out.println("-----------------------------------");
 
@@ -85,7 +87,7 @@ public class ListWithQuestions {
 					question2.printQuestion("Question 2: ");
 
 					String question2Choice = scanner.nextLine();
-					question2.checkAnswer(question2Choice);
+					question2.checkAnswer(question2Choice, user);
 					
 					System.out.println("-----------------------------------");
 
@@ -94,7 +96,7 @@ public class ListWithQuestions {
 					question3.printQuestion("Question 3: ");
 
 					String question3Choice = scanner.nextLine();
-					question3.checkAnswer(question3Choice);
+					question3.checkAnswer(question3Choice, user);
 					
 					System.out.println("-----------------------------------");
 
@@ -103,7 +105,7 @@ public class ListWithQuestions {
 					question4.printQuestion("Question 4: ");
 
 					String question4Choice = scanner.nextLine();
-					question4.checkAnswer(question4Choice);
+					question4.checkAnswer(question4Choice, user);
 					
 					System.out.println("-----------------------------------");
 
@@ -112,12 +114,14 @@ public class ListWithQuestions {
 					question5.printQuestion("Question 5: ");
 
 					String question5Choice = scanner.nextLine();
-					question5.checkAnswer(question5Choice);
+					question5.checkAnswer(question5Choice, user);
+					
+					return user.getPoints();
 		}
 	
 
 	//Metod som skriver ut alla medium frågor i en specifik ordning. Anropar denna metod i main.
-		public void choiceHard() {
+		public int choiceHard(User user) {
 						// Anropar en metod som skriver ut fråga 1
 						Questions question1 = new Questions("What is the name of the wizard newspaper?",
 								Arrays.asList("The Daily Prophet", "Wizard news", "The Daily newspaper"), "1");
@@ -126,7 +130,7 @@ public class ListWithQuestions {
 						// Kollar vad användaren skrivit in och anropar en metod som ser om det är rätt
 						// eller fel.
 						String question1Choice = scanner.nextLine();
-						question1.checkAnswer(question1Choice);
+						question1.checkAnswer(question1Choice, user);
 
 						System.out.println("-----------------------------------");
 
@@ -135,7 +139,7 @@ public class ListWithQuestions {
 						question2.printQuestion("Question 2: ");
 
 						String question2Choice = scanner.nextLine();
-						question2.checkAnswer(question2Choice);
+						question2.checkAnswer(question2Choice, user);
 						
 						System.out.println("-----------------------------------");
 
@@ -144,7 +148,7 @@ public class ListWithQuestions {
 						question3.printQuestion("Question 3: ");
 
 						String question3Choice = scanner.nextLine();
-						question3.checkAnswer(question3Choice);
+						question3.checkAnswer(question3Choice, user);
 						
 						System.out.println("-----------------------------------");
 
@@ -153,7 +157,7 @@ public class ListWithQuestions {
 						question4.printQuestion("Question 4: ");
 
 						String question4Choice = scanner.nextLine();
-						question4.checkAnswer(question4Choice);
+						question4.checkAnswer(question4Choice, user);
 						
 						System.out.println("-----------------------------------");
 
@@ -162,7 +166,9 @@ public class ListWithQuestions {
 						question5.printQuestion("Question 5: ");
 
 						String question5Choice = scanner.nextLine();
-						question5.checkAnswer(question5Choice);
+						question5.checkAnswer(question5Choice, user);
+						
+						return user.getPoints();
 			}
 	
 	

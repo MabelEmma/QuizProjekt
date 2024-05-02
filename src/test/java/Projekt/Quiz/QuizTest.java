@@ -12,7 +12,7 @@ public class QuizTest {
 	@Test
 	//Testa att användaren kan skriva in ett användarnamn
 	public void testSetUsername() {
-		User user = new User();
+		User user = new User(null);
 		String username = "Emma";
 		user.setUsername(username);
 		assertEquals(username, user.getUsername());

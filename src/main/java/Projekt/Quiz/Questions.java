@@ -2,6 +2,7 @@ package Projekt.Quiz;
 
 import java.util.ArrayList;
 import java.util.List;
+//import java.util.Scanner;
 
 //Här ska det ligga en metod som visar en fråga, dess svarsalternativ och om det är rätt svar.
 //Själva frågorna ska inte ligga här.
@@ -47,12 +48,24 @@ public class Questions {
 	}
 
 	//Metod som ser vad användaren skrivit in och jämnför det med rätt svar.
-	public void checkAnswer(String questionChoice) {
+	public void checkAnswer(String questionChoice, User user) {
 		if (questionChoice.equalsIgnoreCase(this.answer)) {
-			System.out.println("Hurray!");
+			
+			
+			System.out.println("-----------------------------------");
+			System.out.println("Hurray, 10 points to " + user.getHouse());
+			user.increasePoints();
+			System.out.println("Your new score is " + user.getPoints());
 		} else {
-			System.out.println("Fel looser");
+			System.out.println("-----------------------------------");
+			System.out.println("Wrong answer, your score is still " + user.getPoints());
 		}
 	}
 
+	
+	
+	
+	
+	
+	
 }

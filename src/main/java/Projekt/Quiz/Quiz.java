@@ -6,89 +6,53 @@ package Projekt.Quiz;
 import java.util.Scanner;
 
 public class Quiz {
+	
 	public static void main(String[] args) {
 
-		System.out.println("Hello and welcome to this Harry Potter quiz!");
-
-		// Användaren fyller i sitt användarnamn
+		
+		//Fin liten grafik bara
+		Art art = new Art();
+		art.harryPotter();
+		
 		Scanner scanner = new Scanner(System.in);
-
-		System.out.println("Please enter your username: ");
+	
 		
-		 String username = scanner.nextLine(); User user = new User();
-		 user.setUsername(username); System.out.println("Hello " + username + "!" );
-		 
-		 
-		 //Användaren får fylla i svårighetsgrad av quizet
-		 System.out.println("There are three levels of difficulty: "); 
-		 Difficulty difficulty = new Difficulty(); 
-		 difficulty.printDifficultyList();
-		 
+		//Loop så att användaren kan börja om spelet om hen vill
+		while(true) {
+			User user = new User(null);
+			System.out.println("\nHello and welcome to this Harry Potter quiz!");
 
-			
-	while(true) {
-		System.out.println("Enter numbers for the difficulty of your choice: ");
-		int choice = scanner.nextInt();
-		scanner.nextLine();
+		// Användaren fyller i sitt användarnamn och väljer vilket hus den vill tillhöra. Metoden skriver ut det.
 		
-		// Lätta frågorna
-		if (choice == 1) {
-			System.out.println("-----------------------------------");
-			System.out.println("EASY"
-					+ "\n- For each question you will get three options: 1, 2 and 3. Write the number that you think has the correct option :)");
+			user.printUsernameHousePoints();
 
-			System.out.println("-----------------------------------");
-			
-			ListWithQuestions easy = new ListWithQuestions();
-			easy.choiceEasy();
+		//Användaren väljer svårighetsgrad. Metoden skriver ut olika val och skriver ut frågorna för tillhörande val.
+		DifficultyChoice difficultychoice = new DifficultyChoice ();
+		difficultychoice.difficultyChoice(user);
+
+		//Hämtar och skriver ut hur många rätt användaren fick
+		System.out.println("-----------------------------------");
+		System.out.println("You got " + user.getPoints() + " points, out of 50 points!");
+		System.out.println("-----------------------------------");
+		
+		//Grafik
+		art.dobby();
+		
+		//Frågar om användaren vill spela igen.
+		System.out.println("Do you want to try again?");
+		System.out.println("1. Yes \n2. No");
+		
+		String tryAgain = scanner.nextLine(); 
+		if (tryAgain.endsWith("2")) {
 			break;
 		}
-
-		// Medel frågor
-		else if (choice == 2) {
-			System.out.println("-----------------------------------");
-			System.out.println("MEDIUM"
-					+ "\n- For each question you will get three options: 1, 2 and 3. Write the number that you think has the correct option :)");
-
-			System.out.println("-----------------------------------");
-			
-			ListWithQuestions medium = new ListWithQuestions();
-			medium.choiceMedium();
-			break;
-		}
-
-		// Svåra frågor
-		else if (choice == 3) {
-			System.out.println("-----------------------------------");
-			System.out.println("HARD"
-					+ "\n- For each question you will get three options: 1, 2 and 3. Write the number that you think has the correct option :)");
-
-			System.out.println("-----------------------------------");
-			
-			ListWithQuestions hard = new ListWithQuestions();
-			hard.choiceHard();
-			break;
-		}
-
-		// Om användaren skriver in något annat än 1, 2 eller 3.
-		else {
-			System.out.println("You have to write the number 1, 2 or 3. Try again.");
-		}
+		//Avslutar spelet
+		System.out.println("Thanks for playing!");
+		
 	}
-
-		//Här lägger du in det som händer efter användaren svarat på alla frågor
-		
 		
 		scanner.close();
-
-		/*
-		 * //Lista visas med alla frågor, fixa senare ListWithQuestions questions = new
-		 * ListWithQuestions();
-		 * 
-		 * System.out.println("Dessa frågor finns att svara på: ");
-		 * 
-		 * questions.printQuestions();
-		 */
-
 	}
+
+
 }
