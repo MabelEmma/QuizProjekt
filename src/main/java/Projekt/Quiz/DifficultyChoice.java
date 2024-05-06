@@ -4,20 +4,21 @@ import java.util.Scanner;
 
 public class DifficultyChoice {
 	
-	int choice = 0;
-	boolean validInput = false;	
+	//INKAPSLING
+	private int choice = 0;
+	private boolean validInput = false;	
+	
 	Scanner scanner = new Scanner(System.in);
 
 	
 public void difficultyChoice(User user) {
-
 	
 	while(!validInput) {
 		System.out.println("Enter numbers for the difficulty of your choice: ");
 		System.out.println("1. Easy \n2. Medium \n3. Hard ");
 		String input = scanner.nextLine();
 	
-	//Kontrollera att användaren skrivit 1, 2 eller 3. 
+	//KONTROLL att användaren skrivit 1, 2 eller 3. 
 	try {
          choice = Integer.parseInt(input);
          
