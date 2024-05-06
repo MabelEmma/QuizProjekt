@@ -12,18 +12,35 @@ public class QuizTest {
 	@Test
 	//Testa att användaren kan skriva in ett användarnamn
 	public void testSetUsername() {
-		User user = new User(null);
+		User user = new User("testUser");
 		String username = "Emma";
 		user.setUsername(username);
 		assertEquals(username, user.getUsername());
 	}
 	
-	/*@Test
-	Testa att användaren får upp olika alternativ beroende på val av svårighet
-	public void testDifficultyOnQuestions() {
-		Questions questions = new Questions();
-		String[] questionsEasy = {"Which platform does the Hogwarts Express leave from?", "Who stopped Harry and Ron from going through platform nine and three-quarters?"};
-		
-	}*/
+	
+	@Test
+	//Testar att poängen är 0 vid start.
+	public void testStartPoints() {
+		User user = new User("testGubbe");
+		assertEquals(0, user.getPoints());
+	}
+	
+	@Test
+	//Testar att det finns en metod som ökar poängen med 10 poäng.
+    public void testIncreasePoints() {
+        User user = new User("testUser");
+        user.increasePoints();
+        assertEquals(10, user.getPoints());
+    }
+
+	@Test
+	//Testar att det går att välja ett hus
+	public void testSetHouse() {
+		User user = new User("testUser");
+		String house = "Hufflepuff";
+		user.setHouse(house);
+		assertEquals(house, user.getHouse());
+	}
 	
 }
