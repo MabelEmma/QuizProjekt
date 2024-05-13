@@ -67,13 +67,22 @@ public class User {
 		//Anropar metoden nedanför där användaren väljer hus
 		chooseHouse();
 		
-		System.out.println("-----------------------------------");	
-	System.out.println("Hello " + this.username + "!" + " You have joined " +  this.house + ", and you have " + this.getPoints() + " points!");
-		System.out.println("-----------------------------------");
+		//System.out.println("---------------------------------------------------------------------------");
+	System.out.println("Hello " + this.username + "!" + " You have joined " +  this.house + ", and you have " + this.points + " points!");
+	System.out.println("---------------------------------------------------------------------------");
 
 	}
 	
+	
+	//Metod som Hämtar och skriver ut hur många rätt användaren fick
+    public void calculatePoints() {
+	System.out.println("---------------------------------------------------------------------------");
+	System.out.println("You got " + this.points + " points, out of 50 points!");
+    System.out.println("---------------------------------------------------------------------------");
+    }
+	
 	//Metod där användaren får välja hus
+    //Valde att inte skapa enum av House då det blev mer och onödig kod.
 	public void chooseHouse() {
 		
 		while(true) {	

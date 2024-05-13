@@ -5,41 +5,37 @@ package Projekt.Quiz;
 //import java.util.List;
 import java.util.Scanner;
 
+//import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 //Importera för att json fil ska fungera
-//Hur vet man vad som behövs här?
-import org.json.JSONObject;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.File;
+import java.util.List;
 
 
 public class Quiz {
-	
+
 	public static void main(String[] args) {
-
-		//Test att läsa in en json fil
+		
+		List<Questions> questions;
+		
+		//En try och catch för att försöka läsa in en json fil
 		try {
-            // Läs innehållet i JSON-filen som en sträng
-            String content = new String(Files.readAllBytes(Paths.get("src/main/java/Projekt/Quiz/Questions.json")));
+	            // Skapa en ObjectMapper för att läsa in JSON-filen
+	            ObjectMapper objectMapper = new ObjectMapper();
+	            objectMapper.enable(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY);
 
-            // Skapa ett JSON-objekt från den inlästa strängen
-            JSONObject jsonObject = new JSONObject(content);
+	            // Läs in JSON-filen och konvertera den till en lista av frågor
+	            questions = objectMapper.readValue(new File("./src/main/java/Projekt/Quiz/Questions.json"),
+	                    objectMapper.getTypeFactory().constructCollectionType(List.class, Questions.class));
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	            return;
+	        }
 
-            // Hämta och skriv ut attributen från JSON-objektet
-            String name = jsonObject.getString("name");
-            int age = jsonObject.getInt("age");
-            String city = jsonObject.getString("city");
 
-            System.out.println("Name: " + name);
-            System.out.println("Age: " + age);
-            System.out.println("City: " + city);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 		
-		
-//Nedanför börja riktiga quizet, innan är det bara test med json fil		
-//---------------------------	
-		
+//Nedanför börja quizet, innan läses bara filen ut		
 		
 		//Grafik
 		Art art = new Art();
@@ -53,18 +49,16 @@ public class Quiz {
 			User user = new User(null);
 			System.out.println("\nHello and welcome to this Harry Potter quiz!");
 
-		// Användaren fyller i sitt användarnamn och väljer vilket hus den vill tillhöra. Metoden skriver ut det.
+		//Användaren fyller i sitt användarnamn och väljer vilket hus den vill tillhöra. Metoden skriver ut det.
 		
 			user.printUsernameHousePoints();
 
 		//Användaren väljer svårighetsgrad. Metoden skriver ut olika val och skriver ut frågorna för tillhörande val.
 		DifficultyChoice difficultychoice = new DifficultyChoice ();
-		difficultychoice.difficultyChoice(user);
+		difficultychoice.difficultyChoice(user, questions);
 
-		//Hämtar och skriver ut hur många rätt användaren fick
-		System.out.println("-----------------------------------");
-		System.out.println("You got " + user.getPoints() + " points, out of 50 points!");
-		System.out.println("-----------------------------------");
+		//Räknar ut användarens slutpoäng och skriver ut.
+		user.calculatePoints();
 		
 		//Grafik
 		art.dobby();

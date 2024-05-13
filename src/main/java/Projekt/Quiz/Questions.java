@@ -4,17 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 //import java.util.Scanner;
 
-//Här ska det ligga en metod som visar en fråga, dess svarsalternativ och om det är rätt svar.
-//Själva frågorna ska inte ligga här.
-
-//Skapa en konstruktor så ListWithQuestions kan skapa instanser av denna klass.
+//Klass som tar in fråga, alternativ och rätt svar från json filen och sätter dessa i olika varibler med samma namn.
 
 public class Questions {
 
 	String question;
 	String answer;
 	List<String> choices;
+	String difficulty;
 
+	public Questions() {}
+	
 	public Questions(String question, List<String> choices, String answer) {
 		this.question = question;
 		this.answer = answer;
@@ -37,10 +37,16 @@ public class Questions {
 	public List<String> getChoices() {
 		return choices;
 	}
+	
+	public String getDifficulty() {
+		return difficulty;
+	}
 
 	//Metod som skriver ut frågan tillsammans med tre alternativ
 	public void printQuestion(String questionNumber) {
-		System.out.println(questionNumber + this.question);
+        System.out.println("---------------------------------------------------------------------------");
+		System.out.println(questionNumber + ". " + this.question);
+        System.out.println("---------------------------------------------------------------------------");
 		for (int i = 0; i < this.choices.size(); i++) {
 			System.out.println(i + 1 + ". " + this.choices.get(i));
 
@@ -52,12 +58,11 @@ public class Questions {
 		if (questionChoice.equalsIgnoreCase(this.answer)) {
 			
 			
-			System.out.println("-----------------------------------");
+	        System.out.println("---------------------------------------------------------------------------");
 			System.out.println("Hurray, 10 points to " + user.getHouse());
 			user.increasePoints();
 			System.out.println("Your new score is " + user.getPoints());
 		} else {
-			System.out.println("-----------------------------------");
 			System.out.println("Wrong answer, your score is still " + user.getPoints());
 		}
 	}
