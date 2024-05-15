@@ -1,31 +1,30 @@
 package Projekt.Quiz;
 import java.util.ArrayList;
-//import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-//Här samlas alla frågor
-
-//Skapa en array med frågorna.
-//När jag skapar arrayen kan jag anropa konstruktorn i Questions.
 
 public class ListWithQuestions {
 	
 	Scanner scanner = new Scanner(System.in);
 	
+	//Använder arraylist som en typ av ADT
 	List<Questions> easyQuestions = new ArrayList<>();
 	List<Questions> mediumQuestions = new ArrayList<>();
 	List<Questions> hardQuestions = new ArrayList<>();
 	
+	//Konstruktor
 	public ListWithQuestions(List<Questions> questions) {
 		for (Questions question: questions) {
-			if(question.difficulty.equalsIgnoreCase("easy")) {
+			
+			//Använder mig av equals
+			if(question.getDifficulty().equalsIgnoreCase("easy")) {
 				easyQuestions.add(question);
 			}
-			else if(question.difficulty.equalsIgnoreCase("medium")) {
+			else if(question.getDifficulty().equalsIgnoreCase("medium")) {
 				mediumQuestions.add(question);
 			}
-			else if(question.difficulty.equalsIgnoreCase("hard")) {
+			else if(question.getDifficulty().equalsIgnoreCase("hard")) {
 				hardQuestions.add(question);
 			}
 		}
@@ -37,6 +36,7 @@ public class ListWithQuestions {
 				
 		int questionNumber = 1;
 		
+				//Vad gör denna?
 				for(Questions question: easyQuestions) {
 					//Omvandlar questionsNumber från en int till en String och skickar den sen till printQuestion och skriver ut.
 					question.printQuestion(Integer.toString(questionNumber));

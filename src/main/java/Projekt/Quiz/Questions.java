@@ -1,21 +1,20 @@
 package Projekt.Quiz;
 
-import java.util.ArrayList;
 import java.util.List;
-//import java.util.Scanner;
 
 //Klass som tar in fråga, alternativ och rätt svar från json filen och sätter dessa i olika varibler med samma namn.
 
 public class Questions {
 
-	String question;
-	String answer;
-	List<String> choices;
-	String difficulty;
+	private String question;
+	private String answer;
+	private List<String> choices;
+	private String difficulty;
 
+	//Kontruktor
 	public Questions() {}
 	
-	public Questions(String question, List<String> choices, String answer) {
+	/*public Questions(String question, List<String> choices, String answer) {
 		this.question = question;
 		this.answer = answer;
 		this.choices = new ArrayList<>();
@@ -24,7 +23,7 @@ public class Questions {
 			this.choices.add(choice);
 		}
 
-	}
+	}*/
 
 	public String getQuestion() {
 		return question;
@@ -41,6 +40,8 @@ public class Questions {
 	public String getDifficulty() {
 		return difficulty;
 	}
+	
+	//Varför har jag ingen set här?
 
 	//Metod som skriver ut frågan tillsammans med tre alternativ
 	public void printQuestion(String questionNumber) {
@@ -56,7 +57,6 @@ public class Questions {
 	//Metod som ser vad användaren skrivit in och jämnför det med rätt svar.
 	public void checkAnswer(String questionChoice, User user) {
 		if (questionChoice.equalsIgnoreCase(this.answer)) {
-			
 			
 	        System.out.println("---------------------------------------------------------------------------");
 			System.out.println("Hurray, 10 points to " + user.getHouse());

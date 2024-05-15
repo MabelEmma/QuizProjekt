@@ -43,4 +43,12 @@ public class QuizTest {
 		assertEquals(house, user.getHouse());
 	}
 	
+	@Test
+	//Testar så att det är rätt sökväg
+	public void testReadFile() {
+		Quiz quiz = new Quiz();
+		assertEquals("./src/main/java/Projekt/Quiz/Questions.json", quiz.getFilePath());
+
+	}
+	
 }
