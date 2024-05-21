@@ -12,7 +12,7 @@ public class QuizTest {
 	@Test
 	//Testa att användaren kan skriva in ett användarnamn
 	public void testSetUsername() {
-		User user = new User("testUser");
+		User user = new User();
 		String username = "Emma";
 		user.setUsername(username);
 		assertEquals(username, user.getUsername());
@@ -21,14 +21,14 @@ public class QuizTest {
 	@Test
 	//Testar att poängen är 0 vid start.
 	public void testStartPoints() {
-		User user = new User("testGubbe");
+		User user = new User();
 		assertEquals(0, user.getPoints());
 	}
 	
 	@Test
 	//Testar att det finns en metod som ökar poängen med 10 poäng.
     public void testIncreasePoints() {
-        User user = new User("testUser");
+        User user = new User();
         user.increasePoints();
         assertEquals(10, user.getPoints());
     }
@@ -36,7 +36,7 @@ public class QuizTest {
 	@Test
 	//Testar att det går att välja ett hus
 	public void testSetHouse() {
-		User user = new User("testUser");
+		User user = new User();
 		String house = "Hufflepuff";
 		user.setHouse(house);
 		assertEquals(house, user.getHouse());

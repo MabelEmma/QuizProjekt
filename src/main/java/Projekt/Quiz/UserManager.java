@@ -9,21 +9,26 @@ import java.util.List;
 //Skapa en generics klass med typparameter T. T är en subklass av User och kan vara vilken som helst typ som ärver från User.
 public class UserManager<T extends User> {
 
-	GenerateHashMap generateHashMap = new GenerateHashMap();
+	//GenerateHashMap generateHashMap = new GenerateHashMap();
 	
 	
 	//Skapas en privat ArrayList av typen T. Listan heter users och kommer innehålla objekt av typen T.
 	private List<T> users = new ArrayList<>();
+	private List<Integer> hashedUsers = new ArrayList<>();
 
 	    //Metod som tar in parametern user av typen T och lägger till user till listan users.
-		public void addUser(T user) {
-	        users.add(user);
-	    }
-
-	    //Metod som tar in parametern index av typen int. 
-		public T getUser(int index) {
-	        //returnerar elementet vid den angivna positionen i listan users.
-			return users.get(index);
+		public boolean addUser(T user) {
+	        //users.add(user);
+	        
+	        //Kontrollerar om username redan finns inlagt i listan genom att jämnföra haskoder
+	        if (!hashedUsers.contains(user.hashCode())) { // Kontroll av hashkoden
+	            users.add(user);
+	            hashedUsers.add(user.hashCode()); // Lägg till hashkoden i listan
+	            return true;
+	        } else {
+	            System.out.println("Username: " + user.getUsername() + "is already in: " + user.getHouse());
+	            return false;
+	        }
 	    }
 
 	    //Metod som returnerar hela listan users.
@@ -36,10 +41,11 @@ public class UserManager<T extends User> {
 	        //for-each loop som ser över varje user i listan users.
 			for (T user : users) {
 	            //Skriver ut namn, hus, poäng och hashcode
-				generateHashMap.getHashCode(user);
+				System.out.println("Username: " + user.getUsername() + ", House: " + user.getHouse() + ", Points: " + user.getPoints() + ", Hashcode: " + user.getHashCode());
 	        }
 	    }
-	
-	
-	
+
 }
+
+
+

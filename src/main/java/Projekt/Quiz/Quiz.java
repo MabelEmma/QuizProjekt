@@ -41,9 +41,8 @@ public class Quiz {
 		
 		
 		
-//Nedanför börja quizet, innan läses bara filen ut		
-		
-		//Grafik
+//Nedanför börja quizet, innan läses bara filen in		
+	
 		Art art = new Art();
 		art.harryPotter();
 		
@@ -51,16 +50,21 @@ public class Quiz {
         
 		//Listan som user placeras i
 		UserManager<User> userManager = new UserManager<>();
-	
+		
 		
 		//Loop så att användaren kan börja om spelet om hen vill
 		while(true) {
-			User user = new User("");
+			User user = new User();
 			System.out.println("\nHello and welcome to this Harry Potter quiz!");
 
 			//Användaren fyller i sitt användarnamn och väljer vilket hus den vill tillhöra. Metoden skriver ut det.
-		
 			user.printUsernameHousePoints();
+			
+			//Kollar om användarens namn + hus redan är inlagd. Om den finns hoppar man tillbaka till början av while loopen.
+			if (!userManager.addUser(user)) {
+				continue;
+			}
+
 
 			//Användaren väljer svårighetsgrad. Metoden skriver ut olika val och skriver ut frågorna för tillhörande val.
 			//Frågorna skriv ut.
@@ -73,7 +77,7 @@ public class Quiz {
 			//Grafik
 			art.dobby();
 			
-	        userManager.addUser(user);
+	        
 			
 			//Frågar om användaren vill spela igen.
 			System.out.println("Do you want to try again?");

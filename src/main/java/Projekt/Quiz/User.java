@@ -7,7 +7,7 @@ public class User {
 
 	//INKAPSLING
 	private String username;
-	private int points;
+	private int points = 0;
 	private String house;
 	private Scanner scanner;
 	
@@ -15,30 +15,27 @@ public class User {
 	
 	
 	//Konstruktor
-	public User(String username) {
-		this.username = username;
-		this.points = 0;
+	public User() {
 		//Scanner är med i konstruktorn för att inte behöva återupprepas
-		scanner = new Scanner(System.in);
-		
-        this.setHashCode(username.hashCode()); // Generera hashkod baserad på användarnamnet
+		//Säkerställer att varje User-objekt har sin egen Scanner-instans för inmatning, viktigt då varje användare förväntas göra egen inmatning.
+		scanner = new Scanner(System.in);  
 	}
 	
 	
 	//VAD HAR JAG GJORT HÄR
 	//Override används för att ange att en metod är avsedd att överskugga en metod med samma signatur i en superklass.
 	//Polymorfism för att jag skriver över default hashCode metoden med min egna hashCode metod.
-	@Override
+	/*@Override
     public int hashCode() {
-		int result = 17; // Startvärde för hashkoden
+		int result = 17; //Startvärde för hashkoden
 			result = 31 * result + username.hashCode(); // Lägg till användarnamnets hashkod
 			result = 31 * result + points; // Lägg till poängens hashkod
 			result = 31 * result + house.hashCode(); // Lägg till husets hashkod
 	return result;
-    }
+    }*/
 
 	public int getHashCode() {
-		return hashCode;
+		return this.hashCode;
 	}
 
 	public void setHashCode(int hashCode) {
@@ -91,7 +88,6 @@ public class User {
 		return username;
 		}
 	
-	
 	//Funktion för att hämta poäng och placera i variabeln points
 	public void setPoints(int points) {
 		if(points>= 0) {
@@ -116,6 +112,7 @@ public class User {
 	public String getHouse() {
 		return house;
 	}
+
 	
 	
 	//Skriv ut username, house och points
@@ -124,15 +121,17 @@ public class User {
 		System.out.println("Please enter your username: ");
 		
 		String username = scanner.nextLine(); 
-		setUsername(username); 
+		setUsername(username);
 		
 		//Anropar metoden nedanför där användaren väljer hus
 		chooseHouse();
+		setHashCode((this.username+this.house).hashCode());
 		
 	System.out.println("Hello " + this.username + "!" + " You have joined " +  this.house + ", and you have " + this.points + " points!");
 	System.out.println("---------------------------------------------------------------------------");
 
 	}
+	
 	
 	
 	//Metod som Hämtar och skriver ut hur många rätt användaren fick
@@ -142,6 +141,7 @@ public class User {
     System.out.println("---------------------------------------------------------------------------");
     }
 	
+    
     
 	//Metod där användaren får välja hus
 	public void chooseHouse() {
