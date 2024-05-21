@@ -1,16 +1,10 @@
 package Projekt.Quiz;
 
-//import java.util.ArrayList;
-//import java.util.Arrays;
-//import java.util.List;
 import java.util.Scanner;
 
-//import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
-//Importera för att json fil ska fungera
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
-import java.util.HashMap;
 import java.util.List;
 
 
@@ -54,6 +48,9 @@ public class Quiz {
 		art.harryPotter();
 		
 		Scanner scanner = new Scanner(System.in);
+        
+		//Listan som user placeras i
+		UserManager<User> userManager = new UserManager<>();
 	
 		
 		//Loop så att användaren kan börja om spelet om hen vill
@@ -76,9 +73,7 @@ public class Quiz {
 			//Grafik
 			art.dobby();
 			
-			//Skriver ut en unik hashcode för användaren.
-			GenerateHashMap generateHashMap = new GenerateHashMap();
-			generateHashMap.getHashCode(user);
+	        userManager.addUser(user);
 			
 			//Frågar om användaren vill spela igen.
 			System.out.println("Do you want to try again?");
@@ -92,6 +87,8 @@ public class Quiz {
 		
 	}
 		//Avslutar spelet
+		System.out.println("These players have played today: ");
+        userManager.printAllUsers();
 		System.out.println("Thanks for playing!");
 
 		

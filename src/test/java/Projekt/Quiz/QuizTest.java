@@ -18,7 +18,6 @@ public class QuizTest {
 		assertEquals(username, user.getUsername());
 	}
 	
-	
 	@Test
 	//Testar att poängen är 0 vid start.
 	public void testStartPoints() {

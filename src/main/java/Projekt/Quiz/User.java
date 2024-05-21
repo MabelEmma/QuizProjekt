@@ -11,8 +11,7 @@ public class User {
 	private String house;
 	private Scanner scanner;
 	
-	
-	private int hashCode; // Lägg till en instansvariabel för hashkoden
+	private int hashCode;
 	
 	
 	//Konstruktor
@@ -26,6 +25,9 @@ public class User {
 	}
 	
 	
+	//VAD HAR JAG GJORT HÄR
+	//Override används för att ange att en metod är avsedd att överskugga en metod med samma signatur i en superklass.
+	//Polymorfism för att jag skriver över default hashCode metoden med min egna hashCode metod.
 	@Override
     public int hashCode() {
 		int result = 17; // Startvärde för hashkoden
@@ -44,6 +46,8 @@ public class User {
 	}
 	
 
+	//VAD HAR JAG GJORT HÄR
+	//Polymorfism
 	@Override
 	public boolean equals(Object obj) {
 	    // Kontrollera om objektet är en instans av User-klassen
@@ -61,28 +65,9 @@ public class User {
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	//INKAPSLING genom att instasvariablen username är privat och endast nås genom dessa get och set metoder.
 	//Här nedan finns en funktion för att kunna hämta ett användnamn och placera det i variablen username.
 	public void setUsername(String username) {
+	
 	
 	//Kontrollera om användaren skrivit ogiltiga tecken
 	try {
@@ -107,7 +92,6 @@ public class User {
 		}
 	
 	
-	//INKAPSLING genom att instasvariablen points är privat och endast nås genom dessa get och set metoder.
 	//Funktion för att hämta poäng och placera i variabeln points
 	public void setPoints(int points) {
 		if(points>= 0) {
@@ -124,8 +108,7 @@ public class User {
 	return points;
 	}
 	
-	
-	//INKAPSLING genom att instasvariablen house är privat och endast nås genom dessa get och set metoder.
+
 	public void setHouse(String house) {
 		this.house = house;
 	}
@@ -146,7 +129,6 @@ public class User {
 		//Anropar metoden nedanför där användaren väljer hus
 		chooseHouse();
 		
-		//System.out.println("---------------------------------------------------------------------------");
 	System.out.println("Hello " + this.username + "!" + " You have joined " +  this.house + ", and you have " + this.points + " points!");
 	System.out.println("---------------------------------------------------------------------------");
 
@@ -162,7 +144,6 @@ public class User {
 	
     
 	//Metod där användaren får välja hus
-    //Valde att inte skapa enum av House då det blev mer och onödig kod.
 	public void chooseHouse() {
 		
 		while(true) {	
@@ -188,10 +169,6 @@ public class User {
          }
 		}
 	}
-
-
-	
-	
 
 
 }

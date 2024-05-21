@@ -13,17 +13,6 @@ public class Questions {
 
 	//Kontruktor
 	public Questions() {}
-	
-	/*public Questions(String question, List<String> choices, String answer) {
-		this.question = question;
-		this.answer = answer;
-		this.choices = new ArrayList<>();
-
-		for (String choice : choices) {
-			this.choices.add(choice);
-		}
-
-	}*/
 
 	public String getQuestion() {
 		return question;
@@ -40,9 +29,9 @@ public class Questions {
 	public String getDifficulty() {
 		return difficulty;
 	}
-	
-	//Varför har jag ingen set här?
+	//Finns ingen set då dessa inte ska ändras.
 
+	
 	//Metod som skriver ut frågan tillsammans med tre alternativ
 	public void printQuestion(String questionNumber) {
         System.out.println("---------------------------------------------------------------------------");

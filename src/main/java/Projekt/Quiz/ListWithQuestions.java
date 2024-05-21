@@ -15,6 +15,7 @@ public class ListWithQuestions {
 	
 	//Konstruktor
 	public ListWithQuestions(List<Questions> questions) {
+		//forEach Loop
 		for (Questions question: questions) {
 			
 			//Använder mig av equals
@@ -36,7 +37,6 @@ public class ListWithQuestions {
 				
 		int questionNumber = 1;
 		
-				//Vad gör denna?
 				for(Questions question: easyQuestions) {
 					//Omvandlar questionsNumber från en int till en String och skickar den sen till printQuestion och skriver ut.
 					question.printQuestion(Integer.toString(questionNumber));

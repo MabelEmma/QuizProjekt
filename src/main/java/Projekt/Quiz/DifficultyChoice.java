@@ -59,8 +59,6 @@ public void difficultyChoice(User user, List<Questions> questions) {
         	System.out.println(difficulty);
             System.out.println("For each question you will get three options: 1, 2 and 3. Write the number that you think has the correct option. \nIf you choose the correct answer you will get 10 points :)");
 
-
-    		//System.out.println("-----------------------------------");
     		
     		allQuestions.choiceMedium(user);
             break;
@@ -70,8 +68,6 @@ public void difficultyChoice(User user, List<Questions> questions) {
         	System.out.println(difficulty);
             System.out.println("For each question you will get three options: 1, 2 and 3. Write the number that you think has the correct option. \nIf you choose the correct answer you will get 10 points :)");
 
-
-    		//System.out.println("-----------------------------------");
     		
     		allQuestions.choiceHard(user);
             break;
