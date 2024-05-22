@@ -8,7 +8,7 @@ public class ListWithQuestions {
 	
 	Scanner scanner = new Scanner(System.in);
 	
-	//Använder arraylist som en typ av ADT
+	//Använder arraylist som en typ av Abstrakt datatyp
 	List<Questions> easyQuestions = new ArrayList<>();
 	List<Questions> mediumQuestions = new ArrayList<>();
 	List<Questions> hardQuestions = new ArrayList<>();
@@ -18,21 +18,20 @@ public class ListWithQuestions {
 		//forEach Loop
 		for (Questions question: questions) {
 			
-			//Använder mig av equals
 			if(question.getDifficulty().equalsIgnoreCase("easy")) {
 				easyQuestions.add(question);
-			}
+				}
 			else if(question.getDifficulty().equalsIgnoreCase("medium")) {
 				mediumQuestions.add(question);
-			}
+				}
 			else if(question.getDifficulty().equalsIgnoreCase("hard")) {
 				hardQuestions.add(question);
-			}
+				}
 		}
 	}
 	
 	
-	//Metod som skriver ut alla lätta frågor i en specifik ordning. Anropar denna metod i main.
+	//Skriver ut alla lätta frågor i en specifik ordning.
 	public void choiceEasy(User user) {
 				
 		int questionNumber = 1;
@@ -49,7 +48,7 @@ public class ListWithQuestions {
 	}
 	
 	
-	//Metod som skriver ut alla medium frågor i en specifik ordning. Anropar denna metod i main.
+	//Skriver ut alla medium frågor i en specifik ordning.
 	public void choiceMedium(User user) {
 				
 		int questionNumber = 1;
@@ -65,7 +64,7 @@ public class ListWithQuestions {
 
 	}
 	
-	//Metod som skriver ut alla svåra frågor i en specifik ordning. Anropar denna metod i main.
+	//Skriver ut alla svåra frågor i en specifik ordning.
 	public void choiceHard(User user) {
 		
 		int questionNumber = 1;
@@ -81,6 +80,7 @@ public class ListWithQuestions {
 
 	}
 				
+
 }			
 				
 	

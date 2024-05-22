@@ -18,12 +18,14 @@ public class QuizTest {
 		assertEquals(username, user.getUsername());
 	}
 	
+	
 	@Test
 	//Testar att poängen är 0 vid start.
 	public void testStartPoints() {
 		User user = new User();
 		assertEquals(0, user.getPoints());
 	}
+	
 	
 	@Test
 	//Testar att det finns en metod som ökar poängen med 10 poäng.
@@ -33,6 +35,7 @@ public class QuizTest {
         assertEquals(10, user.getPoints());
     }
 
+	
 	@Test
 	//Testar att det går att välja ett hus
 	public void testSetHouse() {
@@ -42,11 +45,12 @@ public class QuizTest {
 		assertEquals(house, user.getHouse());
 	}
 	
+	
 	@Test
-	//Testar så att det är rätt sökväg
+	//Testar att det är rätt sökväg
 	public void testReadFile() {
 		Quiz quiz = new Quiz();
-		assertEquals("./src/main/java/Projekt/Quiz/Questions.json", quiz.getFilePath());
+		assertEquals(Quiz.filePath, quiz.getFilePath());
 
 	}
 	
