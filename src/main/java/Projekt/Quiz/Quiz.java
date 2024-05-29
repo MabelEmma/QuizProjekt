@@ -19,7 +19,7 @@ public class Quiz {
 	public static void main(String[] args) {
 		
 		//Information från Json filen lagras i denna varibeln.
-		List<Questions> questions;
+		List<SingleChoiceQuestion> questions;
 		
 		//En try och catch för att försöka läsa in en json fil
 		try {
@@ -31,22 +31,20 @@ public class Quiz {
 
 	            //Läser in JSON-filen och konvertera den till en lista av frågor
 	            questions = objectMapper.readValue(new File(filePath),
-	                    objectMapper.getTypeFactory().constructCollectionType(List.class, Questions.class));
+	                    objectMapper.getTypeFactory().constructCollectionType(List.class, SingleChoiceQuestion.class));
 	    
 	    //Om ett undantag fångas skrivs det ut och sen avslutas programmet. Om allt i try fungerar fortsätter programmet som vanligt.  
 		} catch (Exception e) {
 				//e.printStackTrace();	
 				System.out.println("Error: The file " + filePath + " could not be found.");
 	            return;
-	        }
+	        	}
 
-		
-		
 		
 		Scanner scanner = new Scanner(System.in);
         UserManager<User> userManager = new UserManager<>();
-	
 		Art art = new Art();
+		
 		art.harryPotter();
 		
 		//Loop så att användaren kan börja om spelet om hen vill
@@ -75,8 +73,8 @@ public class Quiz {
 			//Räknar ut användarens slutpoäng och skriver ut.
 			user.calculatePoints();
 		
-			
 			art.dobby();
+			
 			System.out.println("Do you want to try again?");
 			System.out.println("1. Yes \n2. No");
 		
@@ -86,7 +84,7 @@ public class Quiz {
 			break;
 			}
 		
-	}
+		}
 		
 		//Avslutar spelet
 		System.out.println("These players have played today: ");

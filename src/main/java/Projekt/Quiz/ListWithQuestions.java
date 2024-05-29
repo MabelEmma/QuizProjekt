@@ -9,14 +9,14 @@ public class ListWithQuestions {
 	Scanner scanner = new Scanner(System.in);
 	
 	//Använder arraylist som en typ av Abstrakt datatyp
-	List<Questions> easyQuestions = new ArrayList<>();
-	List<Questions> mediumQuestions = new ArrayList<>();
-	List<Questions> hardQuestions = new ArrayList<>();
+	List<SingleChoiceQuestion> easyQuestions = new ArrayList<>();
+	List<SingleChoiceQuestion> mediumQuestions = new ArrayList<>();
+	List<SingleChoiceQuestion> hardQuestions = new ArrayList<>();
 	
 	//Konstruktor
-	public ListWithQuestions(List<Questions> questions) {
-		//forEach Loop
-		for (Questions question: questions) {
+	public ListWithQuestions(List<SingleChoiceQuestion> questions) {
+		//forEach Loop som itererar genom varje Questions-objekt i listan questions.
+		for (SingleChoiceQuestion question: questions) {
 			
 			if(question.getDifficulty().equalsIgnoreCase("easy")) {
 				easyQuestions.add(question);
@@ -36,7 +36,8 @@ public class ListWithQuestions {
 				
 		int questionNumber = 1;
 		
-				for(Questions question: easyQuestions) {
+				//Itererar loopen genom varje Questions-objekt i easyQuestions-samlingen. 
+				for(SingleChoiceQuestion question: easyQuestions) {
 					//Omvandlar questionsNumber från en int till en String och skickar den sen till printQuestion och skriver ut.
 					question.printQuestion(Integer.toString(questionNumber));
 					questionNumber++;
@@ -53,7 +54,7 @@ public class ListWithQuestions {
 				
 		int questionNumber = 1;
 		
-				for(Questions question: mediumQuestions) {
+				for(SingleChoiceQuestion question: mediumQuestions) {
 					//Omvandlar questionsNumber från en int till en String och skickar den sen till printQuestion och skriver ut.
 					question.printQuestion(Integer.toString(questionNumber));
 					questionNumber++;
@@ -69,7 +70,7 @@ public class ListWithQuestions {
 		
 		int questionNumber = 1;
 		
-				for(Questions question: hardQuestions) {
+				for(SingleChoiceQuestion question: hardQuestions) {
 					//Omvandlar questionsNumber från en int till en String och skickar den sen till printQuestion och skriver ut.
 					question.printQuestion(Integer.toString(questionNumber));
 					questionNumber++;

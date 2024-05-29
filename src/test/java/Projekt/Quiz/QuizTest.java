@@ -2,6 +2,8 @@ package Projekt.Quiz;
 
 import static org.junit.Assert.*;
 
+import java.util.Arrays;
+
 //import java.util.ArrayList;
 //import java.util.List;
 
@@ -51,7 +53,21 @@ public class QuizTest {
 	public void testReadFile() {
 		Quiz quiz = new Quiz();
 		assertEquals(Quiz.filePath, quiz.getFilePath());
-
 	}
 	
+	
+	@Test
+	//Testar att det är rätt svar då fler svar kan vara rätt samt ökar poängen vid rätt svar
+	public void testMultiChoice() {
+		MultiChoiceQuestion mcq = new MultiChoiceQuestion();
+		User user = new User();
+		
+			mcq.setAnswers(Arrays.asList("1", "2"));
+			mcq.checkAnswer("1", user);
+			assertEquals(10, user.getPoints());
+			mcq.checkAnswer("2", user);
+			assertEquals(20, user.getPoints());
+			mcq.checkAnswer("3", user);
+			assertEquals(20, user.getPoints());
+	}
 }

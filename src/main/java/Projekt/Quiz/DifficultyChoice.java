@@ -17,7 +17,7 @@ public class DifficultyChoice {
 	Scanner scanner = new Scanner(System.in);
 
 	
-	public void difficultyChoice(User user, List<Questions> questions) {
+	public void difficultyChoice(User user, List<SingleChoiceQuestion> questions) {
 	
 		while(!validInput) {
 			System.out.println("Enter numbers for the difficulty of your choice: ");
@@ -32,8 +32,8 @@ public class DifficultyChoice {
 					throw new NumberFormatException(); //Kasta undantag om valet inte är 1, 2 eller 3
 					}
          
-			validInput = true; //Om inmatningen är giltig, sätt validInput till true
-			} 	
+				validInput = true; //Om inmatningen är giltig, sätt validInput till true
+				} 	
 			
 			//Vid fel skriv ut följande
 			catch (NumberFormatException e) {
@@ -79,7 +79,6 @@ public class DifficultyChoice {
             break;
             
         default:
-            difficulty = null; //Om användaren anger något annat än 1, 2 eller 3
             break;
             }
     
