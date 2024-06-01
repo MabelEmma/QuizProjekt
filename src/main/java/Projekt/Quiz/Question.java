@@ -5,7 +5,6 @@ import java.util.List;
 public class Question {
 
 	protected String question;
-	protected String answer;
 	protected List<String> choices;
 	protected String difficulty;
 
@@ -15,9 +14,6 @@ public class Question {
 		return question;
 		}
 
-	public String getAnswer() {
-		return answer;
-		}
 
 	public List<String> getChoices() {
 		return choices;

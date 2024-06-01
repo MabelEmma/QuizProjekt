@@ -6,6 +6,13 @@ package Projekt.Quiz;
 
 public class SingleChoiceQuestion extends Question {
 
+	protected String answer;
+
+	public String getAnswer() {
+		return answer;
+		}
+	
+	
 	//Metod som ser vad användaren skrivit in och jämnför det med rätt svar.
 	public void checkAnswer(String questionChoice, User user) {
 		if (questionChoice.equalsIgnoreCase(this.answer)) {
